@@ -31,7 +31,7 @@ jobs:
 
       - name: Generate API documentation
         if: ${{github.event_name == 'push'}}
-        run: ./gradlew :lib:dokkaHtml
+        run: ./gradlew :dokker:dokkaHtml
 
       - name: Deploy API documentation to Github Pages
         if: ${{github.event_name == 'push'}}
