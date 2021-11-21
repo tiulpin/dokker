@@ -39,7 +39,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: lib/build/dokka/html
+          FOLDER: dokker/build/dokka/html
 
   release-notes:
     runs-on: ubuntu-latest
