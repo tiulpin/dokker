@@ -1,8 +1,0 @@
-$dokka.format:html-v1
-$dokka.linkExtension:html
-$dokka.location:////PointingToDeclaration/lib/[root]/index.html
-$dokka.location:/Library///PointingToDeclaration/lib/[root]/-library/index.html
-$dokka.location:/Library/Library/#/PointingToDeclaration/lib/[root]/-library/-library.html
-$dokka.location:/Library/someLibraryMethod/#/PointingToDeclaration/lib/[root]/-library/some-library-method.html
-
-
