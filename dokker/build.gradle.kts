@@ -31,6 +31,8 @@ java {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
+            artifactId = "dokker"
+            from(components["java"])
             pom {
                 name.set("dokker")
                 description.set("The Kotlin Way (DSL) to Generate Many Dockerfiles At Once")
@@ -60,8 +62,8 @@ publishing {
         maven {
             url = uri("https://packages.jetbrains.team/maven/p/sa/maven-public")
             credentials {
-                username = System.getenv("JB_SPACE_CLIENT_ID")
-                password = System.getenv("JB_SPACE_CLIENT_SECRET")
+                username = System.getenv("SPACE_USERNAME")
+                password = System.getenv("SPACE_PASSWORD")
             }
         }
     }
