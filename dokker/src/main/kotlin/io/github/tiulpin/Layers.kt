@@ -1,3 +1,5 @@
+package io.github.tiulpin
+
 const val FROM = "FROM"
 const val RUN = "RUN"
 const val COPY = "COPY"

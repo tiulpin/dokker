@@ -1,4 +1,10 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
+package io.github.tiulpin
+
 import java.io.File
+
+data class Resource(val name: String, val content: String)
 
 /**
  * DSL for building a [Dokker] instance.
@@ -17,7 +23,7 @@ fun dokker(
     registry: String = "docker.io",
     dockerFilename: String = "Dockerfile",
     ignores: List<String> = listOf(),
-    resources: List<String> = listOf(),
+    resources: List<Resource> = listOf(),
     dokkerCommands: Dokker.() -> Unit = {}
 ): Dokker = Dokker(
     name = name,
@@ -46,7 +52,7 @@ data class Dokker(
     val registry: String = "docker.io",
     val dockerFilename: String = "Dockerfile",
     val ignores: List<String> = listOf(),
-    val resources: List<String> = listOf(),
+    val resources: List<Resource> = listOf(),
     val imageName: String = "$registry/$name:$tag",
     val layers: MutableList<Layer> = mutableListOf(
         DockerComment("The Dockerfile is auto-generated with Dokker.")
@@ -212,11 +218,8 @@ data class Dokker(
         }
 
         resources.forEach {
-            val resource = Dokker::class.java.getResource(it)?.readText()
-            if (resource != null) {
-                File(project, it.split("/").last()).apply {
-                    writeText(resource)
-                }
+            File(project, it.name).apply {
+                writeText(it.content)
             }
         }
     }
@@ -265,7 +268,7 @@ fun aptInstall(packages: List<String>, update: Boolean = true, clear: Boolean = 
     val installPackages = packages.joinToString(separator = " ")
     var command = "apt-get install -y $installPackages"
     if (update) {
-        command = "apt-get update${COMMAND_SEP}$command"
+        command = "apt-get update$COMMAND_SEP$command"
     }
     if (clear) {
         command = "$command${COMMAND_SEP}apt-get autoremove -y && apt-get clean && rm -r /var/cache/apt /var/lib/apt/"
