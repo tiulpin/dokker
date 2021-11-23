@@ -54,9 +54,7 @@ data class Dokker(
     val ignores: List<String> = listOf(),
     val resources: List<Resource> = listOf(),
     val imageName: String = "$registry/$name:$tag",
-    val layers: MutableList<Layer> = mutableListOf(
-        DockerComment("The Dockerfile is auto-generated with Dokker.")
-    )
+    val layers: MutableList<Layer> = mutableListOf()
 ) {
     /**
      * Add a USER layer to the Dockerfile.
