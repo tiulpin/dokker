@@ -9,8 +9,8 @@ job("dokker: Publish library") {
     job("Build and publish") {
         container(displayName = "Run publish script", image = "gradle") {
             kotlinScript { api ->
-                api.gradle("build")
-                api.gradle("publish")
+                api.gradle(":dokker:build")
+                api.gradle(":dokker:publish")
             }
         }
     }
