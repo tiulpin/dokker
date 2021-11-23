@@ -1,3 +1,4 @@
+import io.github.tiulpin.*
 import java.io.File
 import kotlin.test.*
 
@@ -38,7 +39,7 @@ class DokkerTest {
         ".venv"
     )
     private val resources = listOf(
-        "examples/.python_version"
+        Resource(".python_version", "3.9.6")
     )
     private val project = dokker(resources = resources, ignores = ignores) {
         from("ubuntu")

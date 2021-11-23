@@ -23,40 +23,45 @@ plugins {
     `maven-publish`
 }
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 publishing {
     publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            create<MavenPublication>("mavenJava") {
-                pom {
-                    name.set("Dokker")
-                    description.set("The Kotlin Way (DSL) to Generate Many Dockerfiles")
-                    url.set("https://github.com/tiulpin/dokker")
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
+        create<MavenPublication>("mavenJava") {
+            pom {
+                name.set("dokker")
+                description.set("The Kotlin Way (DSL) to Generate Many Dockerfiles At Once")
+                url.set("https://github.com/tiulpin/dokker")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
-                    developers {
-                        developer {
-                            id.set("tiulpin")
-                            name.set("Viktor Tiulpin")
-                            email.set("viktor@tiulp.in")
-                        }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/dokker.git")
+                    developerConnection.set("scm:git:git@github.com:tiulpin/dokker.git")
+                    url.set("https://github.com/tiulpin/dokker")
+                }
+                developers {
+                    developer {
+                        id.set("tiulpin")
+                        name.set("Viktor Tiulpin")
+                        email.set("viktor@tiulp.in")
                     }
                 }
             }
         }
     }
-
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/tiulpin/dokker")
+            url = uri("https://packages.jetbrains.team/maven/p/sa/maven-public")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("SPACE_USERNAME")
+                password = System.getenv("SPACE_PASSWORD")
             }
         }
     }
