@@ -263,8 +263,8 @@ fun envQuotes(value: String): String {
  * @return the apt-install commands
  */
 fun aptInstall(packages: List<String>, update: Boolean = true, clear: Boolean = true): String {
-    val installPackages = packages.joinToString(separator = " ")
-    var command = "DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $installPackages"
+    val installPackages = packages.joinToString(INSTALL_SEP)
+    var command = "DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $INSTALL_SEP$installPackages"
     if (update) {
         command = "apt-get update$COMMAND_SEP$command"
     }

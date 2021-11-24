@@ -12,6 +12,7 @@ const val USER = "USER"
 const val WORKDIR = "WORKDIR"
 
 const val COMMAND_SEP = " && \\\n    "
+const val INSTALL_SEP = " \\\n        "
 const val COPY_FROM = "--from"
 
 interface Layer {
