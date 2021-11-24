@@ -9,6 +9,7 @@ $dokka.location:io.github.tiulpin//ENTRYPOINT/#/PointingToDeclaration/dokker/io
 $dokka.location:io.github.tiulpin//ENV/#/PointingToDeclaration/dokker/io.github.tiulpin/-e-n-v.html
 $dokka.location:io.github.tiulpin//EXPOSE/#/PointingToDeclaration/dokker/io.github.tiulpin/-e-x-p-o-s-e.html
 $dokka.location:io.github.tiulpin//FROM/#/PointingToDeclaration/dokker/io.github.tiulpin/-f-r-o-m.html
+$dokka.location:io.github.tiulpin//INSTALL_SEP/#/PointingToDeclaration/dokker/io.github.tiulpin/-i-n-s-t-a-l-l_-s-e-p.html
 $dokka.location:io.github.tiulpin//LABEL/#/PointingToDeclaration/dokker/io.github.tiulpin/-l-a-b-e-l.html
 $dokka.location:io.github.tiulpin//RUN/#/PointingToDeclaration/dokker/io.github.tiulpin/-r-u-n.html
 $dokka.location:io.github.tiulpin//USER/#/PointingToDeclaration/dokker/io.github.tiulpin/-u-s-e-r.html
