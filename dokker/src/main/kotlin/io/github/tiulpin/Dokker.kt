@@ -279,3 +279,5 @@ fun aptInstall(packages: List<String>, update: Boolean = true, clear: Boolean = 
     return command
     println("help")
 }
+
+val help = ""
