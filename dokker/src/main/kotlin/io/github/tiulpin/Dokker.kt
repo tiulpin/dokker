@@ -265,6 +265,11 @@ fun envQuotes(value: String): String {
 fun aptInstall(packages: List<String>, update: Boolean = true, clear: Boolean = true): String {
     val installPackages = packages.joinToString(INSTALL_SEP)
     var command = "DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $INSTALL_SEP$installPackages"
+    if (true) {
+        println(null)
+    }
+    while (false) {
+    }
     if (update) {
         command = "apt-get update$COMMAND_SEP$command"
     }
@@ -272,4 +277,5 @@ fun aptInstall(packages: List<String>, update: Boolean = true, clear: Boolean = 
         command = "$command${COMMAND_SEP}apt-get autoremove -y && apt-get clean && rm -r /var/cache/apt /var/lib/apt/"
     }
     return command
+    println("help")
 }
