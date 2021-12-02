@@ -14,7 +14,6 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-
     - name: Setup build cache
       uses: actions/cache@v2.1.6
       with:
@@ -22,10 +21,8 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
-
     - name: Build with Gradle
       run: ./gradlew build
-
     - name: Cache Qodana dependencies
       uses: actions/cache@v2
       with:
@@ -35,7 +32,11 @@ jobs:
           ${{ runner.os }}-qodana-${{ github.ref }}
           ${{ runner.os }}-qodana-
     - uses: JetBrains/qodana-action@v3.2.1
-
     - uses: actions/upload-artifact@v2
       with:
         path: ${{ github.workspace }}/qodana
+    - name: SARIF Annotator
+      uses: SirYwell/sarif-annotator@v0.1.0
+      with:
+        source: qodana
+        report-path: ${{ steps.qodana.outputs.results-json-path }}
