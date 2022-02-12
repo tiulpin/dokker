@@ -14,7 +14,7 @@ steps:
 - task: Qodana@0
 - task: CmdLine@2
   inputs:
-    script: 'cp $(Agent.TempDirectory)/qodana/results/qodana.sarif.json'
+    script: 'cp $(Agent.TempDirectory)/qodana/results/qodana.sarif.json $(Agent.TempDirectory)/qodana/results/qodana.sarif'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Agent.TempDirectory)/qodana/results/qodana.sarif'
