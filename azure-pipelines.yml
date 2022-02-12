@@ -9,4 +9,4 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: QodanaScan@0
+- task: Qodana@0
