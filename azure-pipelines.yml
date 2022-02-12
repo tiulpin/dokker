@@ -12,5 +12,3 @@ pool:
 
 steps:
 - task: Qodana@0
-  inputs:
-   artifactName: qodana
