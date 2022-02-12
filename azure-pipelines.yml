@@ -12,3 +12,12 @@ pool:
 
 steps:
 - task: Qodana@0
+- task: CmdLine@2
+  inputs:
+    script: 'cp $(Agent.TempDirectory)/qodana/results/qodana.sarif.json'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Agent.TempDirectory)/qodana/results/qodana.sarif'
+    ArtifactName: 'CodeAnalysisLogs'
+    publishLocation: 'Container'
+  
