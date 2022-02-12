@@ -11,13 +11,20 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: Cache@2
+  inputs:
+    key: '$(Build.Repository.Name)-$(Build.SourceBranchName)-$(Build.SourceVersion)'
+    path: '$(Agent.TempDirectory)/qodana/cache/'
+    restoreKeys: |
+      $(Build.Repository.Name)-$(Build.SourceBranchName)-
+      $(Build.Repository.Name)-
 - task: Qodana@0
 - task: CmdLine@2
   inputs:
     script: 'cp $(Agent.TempDirectory)/qodana/results/qodana.sarif.json $(Agent.TempDirectory)/qodana/results/qodana.sarif'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Agent.TempDirectory)/qodana/results/qodana.sarif'
+    PathtoPublish: 'qodana.sarif'
     ArtifactName: 'CodeAnalysisLogs'
     publishLocation: 'Container'
   
