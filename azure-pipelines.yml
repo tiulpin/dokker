@@ -11,6 +11,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: 'mkdir -p $(Agent.TempDirectory)/qodana/cache/'
 - task: Cache@2
   inputs:
     key: '$(Build.Repository.Name)-$(Build.SourceBranchName)-$(Build.SourceVersion)'
