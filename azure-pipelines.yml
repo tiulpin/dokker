@@ -11,16 +11,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: CmdLine@2
-  inputs:
-    script: 'mkdir -p $(Agent.TempDirectory)/qodana/cache/'
 - task: Cache@2
   inputs:
-    key: '$(Build.Repository.Name)-$(Build.SourceBranchName)-$(Build.SourceVersion)'
-    path: '$(Agent.TempDirectory)/qodana/cache/'
+    key: '"$(Build.Repository.Name)" | "$(Build.SourceBranchName)" | "$(Build.SourceVersion)"'
+    path: '$(Agent.TempDirectory)/qodana/cache'
     restoreKeys: |
-      $(Build.Repository.Name)-$(Build.SourceBranchName)-
-      $(Build.Repository.Name)-
+      "$(Build.Repository.Name)" | "$(Build.SourceBranchName)"
+      "$(Build.Repository.Name)"
 - task: Qodana@0
 - task: CmdLine@2
   inputs:
