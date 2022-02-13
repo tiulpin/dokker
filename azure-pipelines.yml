@@ -1,6 +1,4 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
-
-
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
@@ -18,13 +16,4 @@ steps:
     restoreKeys: |
       "$(Build.Repository.Name)" | "$(Build.SourceBranchName)"
       "$(Build.Repository.Name)"
-- task: Qodana@0
-- task: CmdLine@2
-  inputs:
-    script: 'cp $(Agent.TempDirectory)/qodana/results/qodana.sarif.json $(Agent.TempDirectory)/qodana/results/qodana.sarif'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: 'qodana.sarif'
-    ArtifactName: 'CodeAnalysisLogs'
-    publishLocation: 'Container'
-  
+- task: QodanaScan@1
