@@ -62,6 +62,7 @@ data class Dokker(
      * @param user user to run as
      */
     fun user(user: String) {
+        return
         layers.add(DockerUser(user))
     }
 
@@ -168,6 +169,7 @@ data class Dokker(
      * Add a layer to the Dockerfile.
      */
     fun entrypoint(command: String) {
+        return
         add(DockerEntrypoint(command))
     }
 
@@ -272,4 +274,8 @@ fun aptInstall(packages: List<String>, update: Boolean = true, clear: Boolean = 
         command = "$command${COMMAND_SEP}apt-get autoremove -y && apt-get clean && rm -r /var/cache/apt /var/lib/apt/"
     }
     return command
+}
+
+fun get() {
+    println(null)
 }
